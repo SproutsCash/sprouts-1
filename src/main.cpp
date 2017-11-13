@@ -966,15 +966,15 @@ int64 GetProofOfWorkReward(unsigned int nBits)
 // sprouts: miner's coin stake is rewarded based on coin age spent (coin-days)
 int64 GetProofOfStakeReward(int64 nCoinAge)
 {
-    static int64 nRewardCoinYear = 730 * CENT;  // creation amount per coin-year
+    static int64 nRewardCoinYear = 243 * CENT;  // creation amount per coin-year
     int64 nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%" PRI64d "\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
     return nSubsidy;
 }
 
-static const int64 nTargetTimespan = 1 * 24 * 60 * 60;  // one week
-static const int64 nTargetSpacingWorkMax = 12 * STAKE_TARGET_SPACING; // 2-hour
+static const int64 nTargetTimespan = 5 * 24 * 60 * 60;  // one week
+static const int64 nTargetSpacingWorkMax = 1 * STAKE_TARGET_SPACING; // 2-hour
 
 //
 // minimum amount of work that could possibly be required nTime after
